@@ -1,0 +1,49 @@
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.StringWriter;
+import java.net.Socket;
+import java.util.Scanner;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
+import javax.xml.bind.Unmarshaller;
+
+public class Transform{
+
+    public static void main(String[] args) throws Exception {
+        String host = "localhost";
+        int port = 8080;
+
+        try (Socket socket = new Socket(host, port);
+             InputStream input = socket.getInputStream()) {
+            JAXBContext jaxbContext = JAXBContext.newInstance(family.class);
+            Scanner scanner = new Scanner(System.in);
+
+            System.out.println("Do you want to marshall (m) or unmarshall (u) the XML file?");
+            String choice = scanner.nextLine().toLowerCase();
+
+            if (choice.equals("m")) {
+                family family = new family("John", 30, null);
+
+                Marshaller marshaller = jaxbContext.createMarshaller();
+                marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+
+                StringWriter writer = new StringWriter();
+                marshaller.marshal(family, writer);
+                System.out.println(writer.toString());
+            } else if (choice.equals("u")) {
+                Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
+                family family = (family) unmarshaller.unmarshal(input);
+
+                System.out.println("Name: " + family.getName());
+                System.out.println("Age: " + family.getAge());
+                System.out.println("families: " + family.getfamilies());
+            } else {
+                System.out.println("Invalid choice.");
+            }
+
+        } catch (JAXBException | IOException e) {
+            e.finalize();
+        }
+    }
+}
