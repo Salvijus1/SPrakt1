@@ -1,0 +1,70 @@
+//
+// Source code recreated from a .class file by IntelliJ IDEA
+// (powered by FernFlower decompiler)
+//
+
+import java.io.BufferedInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.net.Socket;
+
+public class XmlClient {
+    private static final String HOST = "localhost";
+    private static final int PORT = 8080;
+    private static final String FILE_PATH = "received_worker.xml";
+
+    public XmlClient() {
+    }
+
+    public static void main(String[] args) throws IOException {
+        Socket clientSocket = new Socket("localhost", 8080);
+        System.out.println("Connected to server: " + String.valueOf(clientSocket));
+        byte[] buffer = new byte[1024];
+
+        try {
+            BufferedInputStream inputStream = new BufferedInputStream(clientSocket.getInputStream());
+
+            try {
+                FileOutputStream fileOutputStream = new FileOutputStream("received_worker.xml");
+
+                try {
+                    int bytesRead = false;
+
+                    while(true) {
+                        int bytesRead;
+                        if ((bytesRead = inputStream.read(buffer, 0, buffer.length)) == -1) {
+                            System.out.println("XML file received from server");
+                            break;
+                        }
+
+                        fileOutputStream.write(buffer, 0, bytesRead);
+                    }
+                } catch (Throwable var9) {
+                    try {
+                        fileOutputStream.close();
+                    } catch (Throwable var8) {
+                        var9.addSuppressed(var8);
+                    }
+
+                    throw var9;
+                }
+
+                fileOutputStream.close();
+            } catch (Throwable var10) {
+                try {
+                    inputStream.close();
+                } catch (Throwable var7) {
+                    var10.addSuppressed(var7);
+                }
+
+                throw var10;
+            }
+
+            inputStream.close();
+        } catch (IOException var11) {
+            var11.printStackTrace();
+        }
+
+        clientSocket.close();
+    }
+}
