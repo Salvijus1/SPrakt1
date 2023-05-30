@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<worker id="0">
+  <name>John Smith</name>
+  <age>35</age>
+  <gender>Male</gender>
+  <jobTitle>Software Engineer</jobTitle>
+  <department>Engineering</department>
+  <salary>100000</salary>
+  <family_tree>
+    <family id="1">
+      <name>Emily Smith</name>
+      <relationship>Spouse</relationship>
+      <age>32</age>
+    </family>
+    <family id="2">
+      <name>Jack Smith</name>
+      <relationship>Son</relationship>
+      <age>6</age>
+    </family>
+    <family id="3">
+      <name>Jessica Smith</name>
+      <relationship>Daughter</relationship>
+      <age>3</age>
+    </family>
+    <family id="4">
+      <name>Bob Johnson</name>
+      <relationship>Father-in-law</relationship>
+      <age>65</age>
+    </family>
+    <family id="5">
+      <name>Sue Johnson</name>
+      <relationship>Mother-in-law</relationship>
+      <age>63</age>
+    </family>
+    <family id="6">
+      <name>Mike Smith</name>
+      <relationship>Brother</relationship>
+      <age>29</age>
+    </family>
+    <family id="7">
+      <name>Linda Smith</name>
+      <relationship>Sister-in-law</relationship>
+      <age>31</age>
+    </family>
+    <family id="8">
+      <name>Tom Smith</name>
+      <relationship>Brother-in-law</relationship>
+      <age>28</age>
+    </family>
+    <family id="9">
+      <name>Joe Johnson</name>
+      <relationship>Brother-in-law</relationship>
+      <age>36</age>
+    </family>
+    <family id="10">
+      <name>Emily Johnson</name>
+      <relationship>Sister-in-law</relationship>
+      <age>33</age>
+    </family>
+  </family_tree>
+</worker>
