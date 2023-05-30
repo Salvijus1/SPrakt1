@@ -1,0 +1,15 @@
+
+        <!ELEMENT worker (name|age|gender|jobTitle|department|salary|family_tree)*>
+        <!ATTLIST worker
+                id CDATA #REQUIRED>
+        <!ELEMENT name (#PCDATA)>
+        <!ELEMENT age (#PCDATA)>
+        <!ELEMENT gender (#PCDATA)>
+        <!ELEMENT jobTitle (#PCDATA)>
+        <!ELEMENT department (#PCDATA)>
+        <!ELEMENT salary (#PCDATA)>
+        <!ELEMENT family_tree (family)*>
+        <!ELEMENT family (name|relationship|age)*>
+        <!ATTLIST family
+                id CDATA #REQUIRED>
+        <!ELEMENT relationship (#PCDATA)>
