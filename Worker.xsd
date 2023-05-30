@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="worker" type="workerType"/>
+  <xs:complexType name="familyType">
+    <xs:sequence>
+      <xs:element name="name">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="Emily Smith"/>
+            <xs:enumeration value="Jack Smith"/>
+            <xs:enumeration value="Jessica Smith"/>
+            <xs:enumeration value="Bob Johnson"/>
+            <xs:enumeration value="Sue Johnson"/>
+            <xs:enumeration value="Mike Smith"/>
+            <xs:enumeration value="Linda Smith"/>
+            <xs:enumeration value="Tom Smith"/>
+            <xs:enumeration value="Joe Johnson"/>
+            <xs:enumeration value="Emily Johnson"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="relationship">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="Spouse"/>
+            <xs:enumeration value="Son"/>
+            <xs:enumeration value="Daughter"/>
+            <xs:enumeration value="Father-in-law"/>
+            <xs:enumeration value="Mother-in-law"/>
+            <xs:enumeration value="Brother"/>
+            <xs:enumeration value="Sister-in-law"/>
+            <xs:enumeration value="Brother-in-law"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="age">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="32"/>
+            <xs:enumeration value="6"/>
+            <xs:enumeration value="3"/>
+            <xs:enumeration value="65"/>
+            <xs:enumeration value="63"/>
+            <xs:enumeration value="29"/>
+            <xs:enumeration value="31"/>
+            <xs:enumeration value="28"/>
+            <xs:enumeration value="36"/>
+            <xs:enumeration value="33"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="id" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="family_treeType">
+    <xs:sequence>
+      <xs:element type="familyType" name="family" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="workerType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="name"/>
+      <xs:element type="xs:string" name="age"/>
+      <xs:element type="xs:string" name="gender"/>
+      <xs:element type="xs:string" name="jobTitle"/>
+      <xs:element type="xs:string" name="department"/>
+      <xs:element type="xs:string" name="salary"/>
+      <xs:element type="family_treeType" name="family_tree"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="id"/>
+  </xs:complexType>
+</xs:schema>
